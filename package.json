@@ -1,0 +1,30 @@
+{
+  "name": "ping_pong",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "cli": "node ./my_pong/maincli.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minsikim-42/ping_pong.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minsikim-42/ping_pong/issues"
+  },
+  "homepage": "https://github.com/minsikim-42/ping_pong#readme",
+  "dependencies": {
+    "engine": "^1.0.0",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "import": "^0.0.6",
+    "pug": "^3.0.2",
+    "socket.io": "^4.5.2",
+    "socket.io-client": "^4.5.2"
+  }
+}
