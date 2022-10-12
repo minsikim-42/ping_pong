@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
-    "cli": "node ./my_pong/maincli.js",
+    "cli": "node ./my_pong/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

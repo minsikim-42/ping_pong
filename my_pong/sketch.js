@@ -17,8 +17,9 @@ function draw() {
   
   fill('white');
   draw_bar();
-  
-  draw_ball(200, 200);
+
+  if (player === 2)
+    draw_ball(200, 200);
 }
 
 function frame() {
