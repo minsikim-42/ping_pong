@@ -34,7 +34,7 @@ io.on("connection", (socket) => {
 	});
 	if (player >= 2) {
 		console.log(`start!`);
-		io.emit('start', 1);
+		socket.broadcast.emit("start");
 	}
 });
 
