@@ -2,11 +2,11 @@
   "name": "ping_pong",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node main.js",
-    "cli": "node ./my_pong/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test2": "echo \"Error: no test specified\" && exit 1",
+    "test": "babel-node ./test_pong/test.js",
+    "start": "babel-node ./my_pong/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,12 @@
     "url": "https://github.com/minsikim-42/ping_pong/issues"
   },
   "homepage": "https://github.com/minsikim-42/ping_pong#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.3",
+    "@babel/node": "^7.19.1",
+    "@babel/preset-env": "^7.19.4"
+  },
   "dependencies": {
     "engine": "^1.0.0",
     "express": "^4.18.2",
@@ -25,6 +31,7 @@
     "import": "^0.0.6",
     "pug": "^3.0.2",
     "socket.io": "^4.5.2",
-    "socket.io-client": "^4.5.2"
+    "socket.io-client": "^4.5.2",
+    "ws": "^8.9.0"
   }
 }

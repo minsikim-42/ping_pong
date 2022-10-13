@@ -10,22 +10,32 @@
 		var player = 0;
 		var test_x = 0;
 		var test_y = 0;
-		var socket;
+		var socket = null;
 		function button_onclick() {
 			// if (i != 0)
 			// 	return ;
 			socket = io("localhost:" + 3333); // connection
 			socket.emit('button', "");
+			if (socket != null) {
+				console.log(`ccccc!`);
+				socket.on("start", (msg) => {
+					console.log(`im client!`);
+					test_x = _x;
+					// test_y = _y;
+					player = 2;
+				});
+			}
+		}
+		if (socket != null) {
+			console.log(`ccccc!`);
+			socket.on("start", (msg) => {
+				console.log(`im client!`);
+				test_x = _x;
+				// test_y = _y;
+				player = 2;
+			});
 		}
 	</script>
-	<script src="/socket.io/socket.io.js">
-		socket.on("start", () => {
-			console.log(`im client!`);
-			socket.emit('chat', "emit!");
-			test_x = _x;
-			// test_y = _y;
-			player = 2;
-		});
-	</script>
+	<!-- <script src="./tttt.js"> </script> -->
 	<script src="./sketch.js"> </script>
 </html>
