@@ -32,6 +32,8 @@ var data = {
 	},
 
 	ball: {
+		old_x: 0,
+		old_y: 0,
 		x: 0,
 		y: 0,
 		v_x: 0,
@@ -69,10 +71,12 @@ socket.on("game_data", (_data) => {
 	data.game.W = _data.game.W;
 	data.game.UD_d = _data.game.UD_d;
 	data.game.bar_d = _data.game.bar_d;
-	// data.p1.mouse_y = _data.p1.mouse_y;
-	// data.p2.mouse_y = _data.p2.mouse_y;
+	data.p1.mouse_y = _data.p1.mouse_y;
+	data.p2.mouse_y = _data.p2.mouse_y;
 	data.ball.x = _data.ball.x;
 	data.ball.y = _data.ball.y;
+	data.ball.old_x = _data.ball.old_x;
+	data.ball.old_y = _data.ball.old_y;
 	data.ball.v_x = _data.ball.v_x;
 	data.ball.v_y = _data.ball.v_y;
 	console.log(data);

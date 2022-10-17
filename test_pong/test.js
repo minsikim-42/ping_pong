@@ -43,10 +43,12 @@ var data = {
 		mouse_y: 0
 	},
 	ball: {
+		old_x: 100,
+		old_y: 100,
 		x: 100,
 		y: 100,
-		v_x: 5,
-		v_y: 5
+		v_x: 10,
+		v_y: 10
 	}
 };
 
@@ -75,7 +77,7 @@ function handler(socket) {
 			ball_engine();
 			console.log(data);
 		}
-	}, 1000 / 30);
+	}, 1000 / 3);
 };
 
 function ball_engine() {
@@ -83,6 +85,8 @@ function ball_engine() {
 	check_wall();
 	check_bar();
 
+	data.ball.old_x = data.ball.x;
+	data.ball.old_y = data.ball.y;
 	data.ball.x += data.ball.v_x;
 	data.ball.y += data.ball.v_y;
 }
@@ -105,11 +109,11 @@ function check_wall() {
 }
 
 function check_bar() {
-	if (data.ball.x + data.ball.v_x > data.game.bar_d && data.ball.x + data.ball.v_x < data.game.bar_d + 20 && Math.abs(data.ball.y + data.ball.v_y - data.mouse_y) < 40) {
-		data.ball.v_x = Math.abs(v_x);
+	if (data.ball.x + data.ball.v_x > data.game.bar_d && data.ball.x + data.ball.v_x < data.game.bar_d + 20 && Math.abs(data.ball.y + data.ball.v_y - data.p1.mouse_y) < 40) {
+		data.ball.v_x = Math.abs(data.ball.v_x);
 	}
-	else if (data.ball.x + data.ball.v_x < data.game.W - data.game.bar_d - 20 && data.ball.x + data.ball.v_x > data.game.W - data.game.bar_d - 40 && Math.abs(data.ball.y + data.ball.v_y - data.mouse_y) < 40) {
-		if (v_x > 0)
+	else if (data.ball.x + data.ball.v_x < data.game.W - data.game.bar_d - 20 && data.ball.x + data.ball.v_x > data.game.W - data.game.bar_d - 40 && Math.abs(data.ball.y + data.ball.v_y - data.p2.mouse_y) < 40) {
+		if (data.ball.v_x > 0)
 			data.ball.v_x *= -1;
 	}
 }

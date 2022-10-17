@@ -78,7 +78,7 @@ function draw_p2_bar() {
 
 function draw_ball() {
 	erase();
-	rect(data.ball.x - data.ball.v_x - 1, data.ball.y - data.ball.v_y - 1, 20 + 2, 20 + 2);
+	rect(data.ball.old_x - 2, data.ball.old_y - 2, 20 + 4, 20 + 4);
 	noErase();
 	rect(data.ball.x, data.ball.y, 20, 20);
 }
