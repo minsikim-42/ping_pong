@@ -27,17 +27,24 @@ const io = socketio(server);
 let loop = null;
 let champ = 0;
 var data = {
-	p1 : {
-		mouse_x: 0,
-		mouse_: 0
+	game: {
+		H: 400,
+		W: 600,
+		UD_d: 20,
+		bar_d: 50
 	},
-	p2 : {
+
+	p1: {
 		mouse_x: 0,
-		mouse_: 0
+		mouse_y: 0
 	},
-	ball : {
-		x: 200,
-		y: 200,
+	p2: {
+		mouse_x: 0,
+		mouse_y: 0
+	},
+	ball: {
+		x: 100,
+		y: 100,
 		v_x: 5,
 		v_y: 5
 	}
@@ -52,27 +59,61 @@ function handler(socket) {
 	socket.on("p1", (m_y) => {
 		// data.mouse_x = m_x;
 		data.p1.mouse_y = m_y;
-		console.log(`receive p1 m_ : ${m_y}`);
-		console.log(`receive p1 data_m : ${data.p1.mouse_x}, ${data.p1.mouse_y}`);
+		// console.log(`receive p1 m_ : ${m_y}`);
+		// console.log(`receive p1 data_m : ${data.p1.mouse_x}, ${data.p1.mouse_y}`);
 	})
 	socket.on("p2", (m_y) => {
 		// data.mouse_x = m_x;
 		data.p2.mouse_y = m_y;
-		console.log(`receive p2 m_ : ${m_y}`);
-		console.log(`receive p2 data_m : ${data.p2.mouse_x}, ${data.p2.mouse_y}`);
+		// console.log(`receive p2 m_ : ${m_y}`);
+		// console.log(`receive p2 data_m : ${data.p2.mouse_x}, ${data.p2.mouse_y}`);
 	})
 
 	loop = setInterval(() => {
 		io.emit("game_data", data);
 		if (champ >= 2) {
 			ball_engine();
+			console.log(data);
 		}
-	}, 1000/30);
+	}, 1000 / 30);
 };
 
-function ball_engine(){
+function ball_engine() {
 
+	check_wall();
+	check_bar();
+
+	data.ball.x += data.ball.v_x;
+	data.ball.y += data.ball.v_y;
 }
+
+function check_wall() {
+	if (data.ball.x + data.ball.v_x > data.game.W - 20) { // right
+		data.ball.v_x *= -1;
+		// A_score += 1;
+	}
+	else if (data.ball.x + data.ball.v_x < 0) { // left
+		data.ball.v_x *= -1;
+		// B_score += 1;
+	}
+	if (data.ball.y + data.ball.v_y > data.game.H - data.game.UD_d - 20) { // down
+		data.ball.v_y *= -1;
+	}
+	else if (data.ball.y + data.ball.v_y < data.game.UD_d) { // up
+		data.ball.v_y *= -1;
+	}
+}
+
+function check_bar() {
+	if (data.ball.x + data.ball.v_x > data.game.bar_d && data.ball.x + data.ball.v_x < data.game.bar_d + 20 && Math.abs(data.ball.y + data.ball.v_y - data.mouse_y) < 40) {
+		data.ball.v_x = Math.abs(v_x);
+	}
+	else if (data.ball.x + data.ball.v_x < data.game.W - data.game.bar_d - 20 && data.ball.x + data.ball.v_x > data.game.W - data.game.bar_d - 40 && Math.abs(data.ball.y + data.ball.v_y - data.mouse_y) < 40) {
+		if (v_x > 0)
+			data.ball.v_x *= -1;
+	}
+}
+
 
 io.on("connection", handler);
 
