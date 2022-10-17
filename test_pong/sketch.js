@@ -34,8 +34,8 @@ function twinkle() {
 
 function draw_score() {
 	erase();
-	rect(data.game.W / 3 - 30, 25, 60, 50);
-	rect(2 * data.game.W / 3, 25, 60, 50);
+	rect(data.game.W / 3 - 30, 24, 60, 60);
+	rect(2 * data.game.W / 3, 24, 60, 60);
 	noErase();
 
 
@@ -47,9 +47,9 @@ function draw_score() {
 	fill('black');
 	textSize(50);
 	textAlign(LEFT);
-	text(A_score, data.game.W / 3 - 30, 60);
+	text(data.p1.score, data.game.W / 3 - 30, 60);
 	textAlign(LEFT);
-	text(B_score, 2 * data.game.W / 3, 60);
+	text(data.p2.score, 2 * data.game.W / 3, 60);
 }
 
 function draw_p1_bar() {

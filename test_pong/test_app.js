@@ -7,8 +7,8 @@ let champ = -1;
 // let H = 500;
 // let bar_d = 50;
 // let UD_d = 20;
-let A_score = 19;
-let B_score = 19;
+// let A_score = 19;
+// let B_score = 19;
 
 // let x = 0;
 // let y = 0;
@@ -24,11 +24,13 @@ var data = {
 	},
 
 	p1: {
-		mouse_y: 0
+		mouse_y: 0,
+		score: 0
 	},
 
 	p2: {
-		mouse_y: 0
+		mouse_y: 0,
+		score: 0
 	},
 
 	ball: {
@@ -72,7 +74,9 @@ socket.on("game_data", (_data) => {
 	data.game.UD_d = _data.game.UD_d;
 	data.game.bar_d = _data.game.bar_d;
 	data.p1.mouse_y = _data.p1.mouse_y;
+	data.p1.score = _data.p1.score;
 	data.p2.mouse_y = _data.p2.mouse_y;
+	data.p2.score = _data.p2.score;
 	data.ball.x = _data.ball.x;
 	data.ball.y = _data.ball.y;
 	data.ball.old_x = _data.ball.old_x;

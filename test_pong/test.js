@@ -36,19 +36,21 @@ var data = {
 
 	p1: {
 		mouse_x: 0,
-		mouse_y: 0
+		mouse_y: 0,
+		score: 0
 	},
 	p2: {
 		mouse_x: 0,
-		mouse_y: 0
+		mouse_y: 0,
+		score: 0
 	},
 	ball: {
 		old_x: 100,
 		old_y: 100,
 		x: 100,
 		y: 100,
-		v_x: 10,
-		v_y: 10
+		v_x: 4,
+		v_y: 4
 	}
 };
 
@@ -94,11 +96,11 @@ function ball_engine() {
 function check_wall() {
 	if (data.ball.x + data.ball.v_x > data.game.W - 20) { // right
 		data.ball.v_x *= -1;
-		// A_score += 1;
+		data.p1.score += 1;
 	}
 	else if (data.ball.x + data.ball.v_x < 0) { // left
 		data.ball.v_x *= -1;
-		// B_score += 1;
+		data.p2.score += 1;
 	}
 	if (data.ball.y + data.ball.v_y > data.game.H - data.game.UD_d - 20) { // down
 		data.ball.v_y *= -1;
