@@ -77,7 +77,7 @@ function handler(socket) {
 			ball_engine();
 			console.log(data);
 		}
-	}, 1000 / 3);
+	}, 1000 / 30);
 };
 
 function ball_engine() {
